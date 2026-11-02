@@ -6,8 +6,14 @@ import { ProcessTimeline } from "@/components/sections/process-timeline";
 import type { Dictionary } from "@/content";
 import type { Locale } from "@/lib/i18n";
 
-/** Section 5: the four steps from the first call to the signature, and the second call to action. */
-export function Process({ locale, copy }: { locale: Locale; copy: Dictionary["process"] }) {
+type ProcessProps = {
+  locale: Locale;
+  /** `cta` is left out where the page already is the way in, as on the contact page. */
+  copy: Omit<Dictionary["process"], "cta"> & Partial<Pick<Dictionary["process"], "cta">>;
+};
+
+/** Section 5: the steps from the first call to the signature, and the second call to action. */
+export function Process({ locale, copy }: ProcessProps) {
   return (
     <section aria-labelledby="process-title" className="px-3 py-3 md:px-5 md:py-5">
       <div className="mx-auto max-w-[90rem] rounded-[2rem] bg-mist md:rounded-[3rem]">
@@ -32,9 +38,11 @@ export function Process({ locale, copy }: { locale: Locale; copy: Dictionary["pr
 
           <ProcessTimeline steps={copy.steps} className="mt-12 md:mt-20" />
 
-          <Reveal className="mt-12 flex justify-center md:mt-24">
-            <CtaButtons locale={locale} primary={copy.cta.primary} secondary={copy.cta.secondary} />
-          </Reveal>
+          {copy.cta ? (
+            <Reveal className="mt-12 flex justify-center md:mt-24">
+              <CtaButtons locale={locale} primary={copy.cta.primary} secondary={copy.cta.secondary} />
+            </Reveal>
+          ) : null}
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { TextReveal } from "@/components/motion/text-reveal";
 import { ArticleVisual } from "@/components/sections/article-visuals";
 import { Eyebrow } from "@/components/sections/eyebrow";
 import { buttonVariants } from "@/components/ui/button";
-import type { Dictionary } from "@/content";
+import type { Dictionary, Post } from "@/content";
 import { localizedPath, routes, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
@@ -35,10 +35,17 @@ function ReadMore({ label }: { label: string }) {
   );
 }
 
+type ArticlesProps = {
+  locale: Locale;
+  copy: Dictionary["articles"];
+  /** Three articles from the blog, the first one featured. */
+  posts: ReadonlyArray<Post>;
+};
+
 /** Section 6: three articles from the blog, the first one featured. */
-export function Articles({ locale, copy }: { locale: Locale; copy: Dictionary["articles"] }) {
+export function Articles({ locale, copy, posts }: ArticlesProps) {
   const blogHref = localizedPath(locale, routes.blog);
-  const [featured, ...others] = copy.items;
+  const [featured, ...others] = posts;
 
   return (
     <section

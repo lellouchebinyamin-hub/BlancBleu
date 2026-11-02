@@ -1,13 +1,13 @@
 "use client";
 
 import { Dialog } from "@base-ui/react/dialog";
-import { ArrowRightIcon, MailIcon, MessageCircleIcon, PhoneIcon, XIcon } from "lucide-react";
+import { MessageCircleIcon, PhoneIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
 import { Logo } from "@/components/layout/logo";
 import type { Dictionary } from "@/content";
-import { localeMeta, localizedPath, locales, routes, type Locale } from "@/lib/i18n";
+import { localeMeta, localizedPath, locales, routes, sectionOf, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 type MobileMenuProps = {
@@ -15,9 +15,6 @@ type MobileMenuProps = {
   path: string;
   t: Pick<Dictionary, "common" | "nav">;
 };
-
-const roundButton =
-  "grid size-12 place-items-center rounded-full border border-paper/25 transition-colors duration-300 hover:bg-paper/10";
 
 /**
  * Phone menu. It opens as a circle that grows out of the menu button, then the links rise into place
@@ -31,6 +28,7 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
     { route: routes.home, label: t.nav.home },
     { route: routes.services, label: t.nav.services },
     { route: routes.blog, label: t.nav.blog },
+    { route: routes.contact, label: t.nav.contact },
   ];
   const contactHref = localizedPath(locale, routes.contact);
 
@@ -75,9 +73,9 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
               href={localizedPath(locale, routes.home)}
               aria-label={t.common.homeLabel}
               onClick={close}
-              className="motion-safe:animate-fade-up [animation-delay:300ms]"
+              className="rounded-full bg-paper px-5 py-2 motion-safe:animate-fade-up [animation-delay:300ms]"
             >
-              <Logo tone="inverse" />
+              <Logo className="h-10" />
             </Link>
             <Dialog.Close
               aria-label={t.common.closeMenu}
@@ -94,7 +92,9 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
                   <Link
                     href={localizedPath(locale, item.route)}
                     onClick={close}
-                    aria-current={item.route === path ? "page" : undefined}
+                    aria-current={
+                      item.route === path ? "page" : item.route === sectionOf(path) ? "true" : undefined
+                    }
                     className="group/link flex items-baseline gap-4 py-5 aria-[current=page]:text-sky"
                   >
                     <span
@@ -120,19 +120,16 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
 
           <div className="relative mt-auto flex flex-col gap-5 px-5 pt-10 pb-[max(1.5rem,env(safe-area-inset-bottom))] motion-safe:animate-fade-up [animation-delay:650ms]">
             <div className="flex gap-3">
-              <Link
-                href={contactHref}
+              <a
+                href={site.phones.il ? `tel:${site.phones.il.tel}` : contactHref}
                 onClick={close}
                 className="group/cta flex h-14 flex-1 items-center justify-between gap-3 rounded-full bg-paper ps-6 pe-2 font-medium text-navy"
               >
-                {t.nav.contact}
+                {t.common.call}
                 <span className="grid size-10 place-items-center rounded-full bg-navy text-paper">
-                  <ArrowRightIcon
-                    strokeWidth={1.75}
-                    className="transition-transform duration-500 ease-brand group-hover/cta:translate-x-0.5 rtl:-scale-x-100"
-                  />
+                  <PhoneIcon strokeWidth={1.75} className="size-5" />
                 </span>
-              </Link>
+              </a>
               <Link
                 href={site.whatsappUrl ?? contactHref}
                 onClick={close}
@@ -174,20 +171,6 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
                 )}
               </div>
 
-              <div className="flex gap-2">
-                {site.phones.il ? (
-                  <a
-                    href={`tel:${site.phones.il.tel}`}
-                    aria-label={`${t.common.call} ${site.phones.il.display}`}
-                    className={roundButton}
-                  >
-                    <PhoneIcon strokeWidth={1.5} className="size-5" />
-                  </a>
-                ) : null}
-                <a href={`mailto:${site.email}`} aria-label={site.email} className={roundButton}>
-                  <MailIcon strokeWidth={1.5} className="size-5" />
-                </a>
-              </div>
             </div>
           </div>
         </Dialog.Popup>

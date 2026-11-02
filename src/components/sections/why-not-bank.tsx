@@ -17,10 +17,11 @@ export function WhyNotBank({ copy }: { copy: Dictionary["whyNotBank"] }) {
   ];
 
   return (
-    <section aria-labelledby="why-not-bank-title" className="px-3 py-3 md:px-5 md:py-5">
-      <div className="mx-auto max-w-[90rem] overflow-clip rounded-[2rem] bg-navy text-paper md:rounded-[3rem]">
-        <div className="mx-auto max-w-[75rem] px-5 py-16 sm:px-6 md:py-32">
-          <header className="mx-auto flex max-w-[48rem] flex-col items-center text-center">
+    <section aria-labelledby="why-not-bank-title" className="py-3 md:px-5 md:py-5">
+      {/* On phones the band runs edge to edge, square, so the cards inside get the full width. */}
+      <div className="mx-auto max-w-[90rem] overflow-clip bg-navy text-paper md:rounded-[3rem]">
+        <div className="mx-auto max-w-[75rem] px-4 py-16 sm:px-6 md:py-32">
+          <header className="mx-auto flex max-w-[48rem] flex-col items-center px-1 text-center md:px-0">
             <Eyebrow tone="dark" className="mb-7">
               {copy.eyebrow}
             </Eyebrow>
@@ -43,13 +44,13 @@ export function WhyNotBank({ copy }: { copy: Dictionary["whyNotBank"] }) {
 
           <RevealGroup
             as="ul"
-            className="mt-10 grid gap-3 md:mt-20 md:gap-4 lg:grid-cols-3 lg:gap-5"
+            className="mt-10 grid gap-4 md:mt-20 lg:grid-cols-3 lg:gap-5"
           >
             {copy.points.map((point, index) => (
               <RevealItem
                 as="li"
                 key={point.title}
-                className="group/card flex flex-col rounded-[1.75rem] border border-paper/10 bg-paper/[0.04] p-7 transition-[border-color,background-color,translate] duration-500 ease-brand hover:-translate-y-1 hover:border-paper/25 hover:bg-paper/[0.07] max-md:p-6 md:p-9"
+                className="group/card flex flex-col rounded-[1.75rem] border border-paper/10 bg-paper/[0.04] p-7 transition-[border-color,background-color,translate] duration-500 ease-brand hover:-translate-y-1 hover:border-paper/25 hover:bg-paper/[0.07] md:p-9"
               >
                 <div className="flex h-28 items-center md:h-36">{visuals[index]}</div>
                 <span

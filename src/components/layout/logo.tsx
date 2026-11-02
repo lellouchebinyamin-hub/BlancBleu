@@ -1,10 +1,11 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 type Tone = "default" | "inverse";
 
 /**
- * Vector approximation of the BlancBleu cube mark.
- * Swap for the supplied logo file (public/brand) once it is in the project.
+ * The BlancBleu cube mark, drawn as a vector. Used small, for example between the facts in the ticker.
  * `inverse` is for dark backgrounds.
  */
 export function LogoMark({ className, tone = "default" }: { className?: string; tone?: Tone }) {
@@ -30,18 +31,20 @@ export function LogoMark({ className, tone = "default" }: { className?: string; 
   );
 }
 
-export function Logo({ className, tone = "default" }: { className?: string; tone?: Tone }) {
+/**
+ * The full logo: cube, name and "Crédit immobilier", from the supplied artwork (public/brand).
+ * Its colours are fixed, so on a dark background it sits on a light pill. Size it with a height.
+ */
+export function Logo({ className }: { className?: string }) {
   return (
-    <span dir="ltr" className={cn("inline-flex items-center gap-3", className)}>
-      <LogoMark tone={tone} className="h-[2.0625rem] w-[1.9rem] shrink-0" />
-      <span
-        className={cn(
-          "text-[1.375rem] leading-none font-medium tracking-tight lg:text-2xl",
-          tone === "inverse" ? "text-paper" : "text-brand",
-        )}
-      >
-        BlancBleu
-      </span>
-    </span>
+    <Image
+      src="/brand/logo.png"
+      alt="BlancBleu"
+      width={640}
+      height={215}
+      unoptimized
+      priority
+      className={cn("h-11 w-auto shrink-0 lg:h-[3.25rem]", className)}
+    />
   );
 }

@@ -1,6 +1,12 @@
+/**
+ * The address links and previews point to. Set NEXT_PUBLIC_SITE_URL once the real domain is connected;
+ * until then a Vercel deployment uses its own production address, so a shared link shows its own preview image.
+ */
+const deployedHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
 export const site = {
   name: "BlancBleu",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://blancbleu.org",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? (deployedHost ? `https://${deployedHost}` : "https://blancbleu.org"),
   founded: 2004,
   email: "info@blancbleu.org",
   phones: {

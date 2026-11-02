@@ -22,6 +22,7 @@ export function IntroSplash() {
       <script dangerouslySetInnerHTML={{ __html: markSeen }} />
       <div
         aria-hidden
+        data-splash
         className="fixed inset-0 z-[100] grid place-items-center bg-navy text-paper motion-safe:animate-splash-exit motion-reduce:hidden [.no-splash_&]:hidden"
       >
         <div className="flex flex-col items-center gap-9 motion-safe:animate-splash-out">

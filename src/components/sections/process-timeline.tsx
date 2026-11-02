@@ -68,7 +68,7 @@ function Connector({
 }
 
 /**
- * The four steps on a line that fills as you scroll. Horizontal from the desktop breakpoint,
+ * The steps (three or four) on a line that fills as you scroll. Horizontal from the desktop breakpoint,
  * vertical below it. With reduced motion everything is shown as already reached.
  */
 export function ProcessTimeline({
@@ -88,7 +88,10 @@ export function ProcessTimeline({
     <div ref={ref} className={cn("relative", className)}>
       <div
         aria-hidden
-        className="absolute start-6 end-[calc(25%-1.5rem)] top-6 hidden h-px bg-navy/15 lg:block"
+        className={cn(
+          "absolute start-6 top-6 hidden h-px bg-navy/15 lg:block",
+          steps.length === 3 ? "end-[calc(33.333%-1.5rem)]" : "end-[calc(25%-1.5rem)]",
+        )}
       >
         <motion.div
           style={{ scaleX: progress }}
@@ -96,7 +99,11 @@ export function ProcessTimeline({
         />
       </div>
 
-      <RevealGroup as="ol" gap={0.14} className="grid lg:grid-cols-4">
+      <RevealGroup
+        as="ol"
+        gap={0.14}
+        className={cn("grid", steps.length === 3 ? "lg:grid-cols-3" : "lg:grid-cols-4")}
+      >
         {steps.map((step, index) => (
           <RevealItem
             as="li"

@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowRightIcon } from "lucide-react";
+import { PhoneIcon } from "lucide-react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Logo } from "@/components/layout/logo";
 import { MobileMenu } from "@/components/layout/mobile-menu";
@@ -14,8 +14,10 @@ import {
   localizedPath,
   otherLocale,
   routes,
+  sectionOf,
   type Locale,
 } from "@/lib/i18n";
+import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type SiteHeaderProps = {
@@ -40,6 +42,10 @@ export function SiteHeader({ locale, path = routes.home, t }: SiteHeaderProps) {
     else if (latest > previous + 4) setHidden(true);
   });
 
+  useEffect(() => {
+    document.documentElement.dataset.headerHidden = String(hidden);
+  }, [hidden]);
+
   const background = useTransform(
     scrollY,
     [0, 80],
@@ -55,6 +61,7 @@ export function SiteHeader({ locale, path = routes.home, t }: SiteHeaderProps) {
     { route: routes.home, label: t.nav.home },
     { route: routes.services, label: t.nav.services },
     { route: routes.blog, label: t.nav.blog },
+    { route: routes.contact, label: t.nav.contact },
   ];
   const other = otherLocale(locale);
 
@@ -80,12 +87,14 @@ export function SiteHeader({ locale, path = routes.home, t }: SiteHeaderProps) {
         <nav aria-label={t.common.mainNavigation} className="hidden lg:block">
           <ul className="flex items-center" onMouseLeave={() => setHovered(null)}>
             {items.map((item) => {
-              const active = (hovered ?? path) === item.route;
+              const active = (hovered ?? sectionOf(path)) === item.route;
               return (
                 <li key={item.route}>
                   <Link
                     href={localizedPath(locale, item.route)}
-                    aria-current={item.route === path ? "page" : undefined}
+                    aria-current={
+                      item.route === path ? "page" : item.route === sectionOf(path) ? "true" : undefined
+                    }
                     onMouseEnter={() => setHovered(item.route)}
                     onFocus={() => setHovered(item.route)}
                     onBlur={() => setHovered(null)}
@@ -117,21 +126,30 @@ export function SiteHeader({ locale, path = routes.home, t }: SiteHeaderProps) {
             {localeMeta[other].nativeName}
           </Link>
 
-          <Link
-            href={localizedPath(locale, routes.contact)}
-            className={cn(
-              buttonVariants({ size: "default" }),
-              "group/button hidden gap-3 ps-5 pe-1.5 lg:inline-flex",
-            )}
-          >
-            {t.nav.contact}
-            <span className="grid size-8 place-items-center rounded-full bg-white/15">
-              <ArrowRightIcon
-                strokeWidth={1.75}
-                className="size-4 transition-transform duration-500 ease-brand group-hover/button:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover/button:-translate-x-0.5"
-              />
-            </span>
-          </Link>
+          {site.phones.il ? (
+            <>
+              <a
+                href={`tel:${site.phones.il.tel}`}
+                aria-label={`${t.common.call} ${site.phones.il.display}`}
+                className="grid size-11 shrink-0 place-items-center rounded-full border border-navy/15 text-navy transition-colors duration-300 hover:bg-mist lg:hidden"
+              >
+                <PhoneIcon aria-hidden strokeWidth={1.5} className="size-5" />
+              </a>
+              <a
+                href={`tel:${site.phones.il.tel}`}
+                aria-label={`${t.common.call} ${site.phones.il.display}`}
+                className={cn(
+                  buttonVariants({ size: "default" }),
+                  "group/button hidden gap-3 ps-5 pe-1.5 lg:inline-flex",
+                )}
+              >
+                <span dir="ltr">{site.phones.il.display}</span>
+                <span className="grid size-8 place-items-center rounded-full bg-white/15">
+                  <PhoneIcon aria-hidden strokeWidth={1.75} className="size-4" />
+                </span>
+              </a>
+            </>
+          ) : null}
 
           <MobileMenu locale={locale} path={path} t={t} />
         </div>

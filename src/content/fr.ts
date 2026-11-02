@@ -1,3 +1,5 @@
+import { postsFr } from "./blog-fr";
+import { legalFr } from "./legal-fr";
 import type { Dictionary } from "./types";
 
 export const fr = {
@@ -35,6 +37,89 @@ export const fr = {
     { title: "Conseiller indépendant", caption: "Il vous représente, pas la banque" },
     { title: "Les grandes banques", caption: "Partenariats professionnels en Israël" },
   ],
+  servicesPage: {
+    meta: {
+      title: "Nos services | BlancBleu",
+      description:
+        "Conseil indépendant en crédit immobilier : achat, refinancement, prêt tous usages, auto-construction et accompagnement personnalisé. En français et en hébreu, depuis 2004.",
+    },
+    eyebrow: "Nos services",
+    title: { lead: "Des solutions de crédit", accent: "pour chaque projet" },
+    intro:
+      "Nous vous conseillons et vous accompagnons dans tous vos projets de crédit immobilier, avec une solution adaptée à chaque situation : achat, refinancement, prêt garanti par un bien ou construction.",
+    jumpLabel: "Aller au service",
+    includes: "Ce que comprend le service",
+    audience: "À qui il s’adresse",
+    cta: "Premier échange gratuit",
+    items: [
+      {
+        slug: "purchase",
+        lead: "Acheter un logement est l’une des décisions financières les plus importantes de la vie. Nous vous aidons à choisir le prêt le plus avantageux, en tenant compte de votre capacité de remboursement, des taux et de votre situation future.",
+        includes: [
+          "Un accompagnement complet, de la préparation à la signature en banque",
+          "Une comparaison des conditions entre les banques",
+          "Une stratégie de financement sur mesure",
+        ],
+        audience: ["Primo-accédants", "Investisseurs immobiliers", "Ceux qui cherchent à changer de logement"],
+      },
+      {
+        slug: "refinance",
+        lead: "Si vous avez déjà un prêt, vous payez peut-être plus que nécessaire. Nous vérifions s’il est possible d’en améliorer les conditions et d’alléger vos mensualités.",
+        includes: [
+          "L’analyse de votre prêt actuel",
+          "La comparaison des taux et des pistes d’économie",
+          "La construction d’un nouveau montage, plus avantageux",
+        ],
+        audience: [
+          "Les détenteurs d’un prêt aux conditions moins favorables",
+          "Ceux qui veulent réduire leur mensualité",
+          "Ceux dont les revenus ont changé et qui veulent adapter leur prêt",
+        ],
+      },
+      {
+        slug: "any-purpose",
+        lead: "Besoin de financer le développement d’une activité, des travaux ou le règlement de dettes ? Le prêt tous usages est un prêt garanti par votre bien, souvent à de meilleures conditions qu’un prêt classique.",
+        includes: [
+          "Des taux souvent plus bas que ceux des prêts bancaires classiques",
+          "Des mensualités adaptées à votre situation",
+          "La possibilité d’obtenir des montants élevés, souvent sans caution",
+        ],
+        audience: [
+          "Ceux qui ont besoin d’une somme importante",
+          "Les propriétaires qui veulent valoriser leur bien",
+          "Les chefs d’entreprise qui cherchent un financement",
+        ],
+      },
+      {
+        slug: "self-build",
+        lead: "Vous projetez de construire la maison de vos rêves ? Nous vous accompagnons dans l’obtention du financement, nous nous efforçons d’obtenir de bonnes conditions et nous vous aidons à gérer les démarches.",
+        includes: [
+          "Un conseil professionnel à chaque étape du financement",
+          "Un montage de financement sur mesure",
+          "Un suivi auprès de la banque et des intervenants concernés",
+        ],
+        audience: [
+          "Ceux qui prévoient de construire sur un terrain privé",
+          "Ceux qui ont déjà commencé et ont besoin d’un financement pour la suite",
+          "Les familles qui veulent maîtriser leur budget de construction",
+        ],
+      },
+      {
+        slug: "advice",
+        lead: "Même si vous commencez à peine à réfléchir à un prêt, un conseil professionnel vous aide à comprendre toutes les options. Nous vous aidons à préparer la prochaine étape de façon claire et précise.",
+        includes: [
+          "L’analyse de votre situation financière",
+          "Le choix d’un prêt adapté",
+          "Des recommandations pour épargner à l’avenir",
+        ],
+        audience: [
+          "Ceux qui prévoient de prendre un prêt prochainement",
+          "Ceux qui veulent changer de logement et comprendre les options",
+          "Ceux qui ont déjà un prêt et veulent savoir s’il est améliorable",
+        ],
+      },
+    ],
+  },
   whyNotBank: {
     eyebrow: "Pourquoi pas la banque",
     title: { lead: "La banque défend ses intérêts.", accent: "Nous défendons les vôtres." },
@@ -122,29 +207,73 @@ export const fr = {
     title: { lead: "Des articles courts pour y voir clair", accent: "avant une grande décision" },
     allArticles: "Tous les articles",
     readMore: "Lire l’article",
-    items: [
-      {
-        slug: "mortgage-refinance",
-        category: "Refinancement",
-        title: "Refinancer son prêt : quand et comment est-ce vraiment rentable ?",
-        excerpt:
-          "Refinancer, c’est modifier les conditions de votre prêt pour les adapter à votre nouvelle situation ou au marché. Voici comment savoir si c’est pour vous.",
-      },
-      {
-        slug: "five-mistakes",
-        category: "Erreurs courantes",
-        title: "Les 5 plus grandes erreurs lors d’un crédit immobilier",
-        excerpt:
-          "Ne regarder que la mensualité, faire une confiance aveugle à la banque, renoncer à un conseil : comment éviter les erreurs les plus coûteuses.",
-      },
-      {
-        slug: "advisor-worth-it",
-        category: "Conseil indépendant",
-        title: "Un conseiller en crédit immobilier vaut-il vraiment son prix ?",
-        excerpt:
-          "La banque ne vous représente pas, un conseiller si. Trois choses à comprendre avant de décider.",
-      },
-    ],
+  },
+  contact: {
+    meta: {
+      title: "Contact | BlancBleu",
+      description:
+        "Laissez-nous vos coordonnées et nous vous rappellerons, ou contactez-nous par téléphone, e-mail ou WhatsApp. Le premier échange est gratuit, en français ou en hébreu.",
+    },
+    eyebrow: "Contact",
+    title: { lead: "Une question sur votre prêt ?", accent: "Parlons-en." },
+    intro:
+      "Laissez-nous vos coordonnées et nous vous rappellerons, ou contactez-nous directement. Le premier échange est gratuit, en français ou en hébreu.",
+    steps: {
+      eyebrow: "Comment ça marche",
+      title: { lead: "Trois étapes", accent: "pour y voir clair." },
+      intro:
+        "Aucune préparation particulière n’est nécessaire. Quelques mots sur votre situation et votre projet suffisent pour commencer.",
+      steps: [
+        {
+          title: "Vous nous écrivez",
+          text: "Vous remplissez le formulaire ou vous nous contactez directement, en expliquant brièvement de quoi il s’agit.",
+        },
+        {
+          title: "Un premier échange",
+          text: "Nous vous rappelons, en français ou en hébreu, pour comprendre votre situation, votre projet et ce qui compte pour vous.",
+          tag: "Gratuit",
+        },
+        {
+          title: "Analyse et proposition",
+          text: "Nous étudions vos données, comparons les banques et vous présentons la meilleure façon d’avancer.",
+        },
+      ],
+    },
+  },
+  legal: legalFr,
+  a11y: {
+    open: "Menu d’accessibilité",
+    title: "Accessibilité",
+    close: "Fermer",
+    textSize: "Taille du texte",
+    smaller: "Réduire le texte",
+    larger: "Agrandir le texte",
+    contrast: "Contraste élevé",
+    grayscale: "Niveaux de gris",
+    links: "Souligner les liens",
+    readable: "Police lisible",
+    still: "Arrêter les animations",
+    reset: "Réinitialiser",
+    statement: "Déclaration d’accessibilité",
+  },
+  blog: {
+    meta: {
+      title: "Blog | BlancBleu",
+      description:
+        "Des articles courts et clairs sur le refinancement, les taux, le montage du prêt et le conseil indépendant, pour aborder la grande décision en confiance.",
+    },
+    eyebrow: "Blog",
+    title: { lead: "Le savoir qui fait économiser,", accent: "en langage simple." },
+    intro:
+      "Des articles courts et clairs sur le refinancement, les taux, le montage du prêt et le conseil indépendant, pour aborder la grande décision en confiance.",
+    featured: "À la une",
+    minutes: "min de lecture",
+    back: "Retour au blog",
+    summaryTitle: "En bref : l’essentiel à retenir",
+    contentsTitle: "Dans cet article",
+    bottomLineTitle: "En résumé",
+    relatedTitle: "D’autres articles qui peuvent vous intéresser",
+    posts: postsFr,
   },
   faq: {
     eyebrow: "Questions fréquentes",

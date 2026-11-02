@@ -23,10 +23,11 @@ export function Hero({ locale, copy, facts }: HeroProps) {
       </div>
 
       <div className="flex flex-1 items-center">
-        <div className="mx-auto grid w-full max-w-[75rem] items-center px-5 pt-2 pb-8 sm:px-6 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:gap-8 md:py-20">
-          <HeroCube className="md:order-2" />
+        <div className="mx-auto grid w-full max-w-[75rem] items-center px-5 pt-2 pb-8 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-8 md:py-20">
+          {/* The cube comes first, so it sits on the side the text starts from: right in Hebrew, left in French. */}
+          <HeroCube />
 
-          <div className="md:order-1">
+          <div>
             <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border bg-white/70 py-1.5 ps-3.5 pe-4 text-sm text-muted-foreground backdrop-blur-sm motion-safe:animate-fade-up [animation-delay:calc(var(--intro)_+_150ms)]">
               <span aria-hidden className="relative flex size-2">
                 <span className="absolute inline-flex size-full rounded-full bg-brand/60 motion-safe:animate-ping" />

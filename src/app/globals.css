@@ -55,6 +55,17 @@
   --animate-pop-in: pop-in 1.5s var(--ease-brand) both;
   --animate-marquee: marquee 48s linear infinite;
   --animate-marquee-rtl: marquee-rtl 48s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 
   @keyframes pop-in {
     from {
@@ -187,6 +198,20 @@ html:not(.no-splash) {
   }
 }
 
+/* The services tab bar sits under the floating header, and takes its place when the header hides. */
+.service-tabs {
+  top: var(--header-h);
+  padding-top: 0.5rem;
+  transition:
+    top 0.5s var(--ease-brand),
+    padding-top 0.5s var(--ease-brand);
+}
+
+html[data-header-hidden="true"] .service-tabs {
+  top: 0;
+  padding-top: 0.75rem;
+}
+
 @media (min-width: 64rem) {
   :root {
     --header-h: 5.5rem;
@@ -228,4 +253,51 @@ html:not(.no-splash) {
     outline-offset: 3px;
   }
 }
+
+/*
+ * Accessibility menu settings (components/layout/accessibility-menu.tsx, lib/a11y.ts).
+ * They are classes on <html>, so they sit outside the layers and win over the utilities.
+ * Text size is set inline on <html>; every size on the site is in rem, so it all follows.
+ */
+html.a11y-contrast {
+  --color-paper: #ffffff;
+  --color-mist: #ebebeb;
+  --color-hairline: #1a1a1a;
+  --color-ink-muted: #1a1a1a;
+  --color-brand: #0a2a8a;
+}
+
+html.a11y-gray {
+  filter: grayscale(1);
+}
+
+html.a11y-links a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+html.a11y-readable,
+html.a11y-readable * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+html.a11y-still *,
+html.a11y-still *::before,
+html.a11y-still *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html.a11y-still [data-splash] {
+  display: none !important;
+}
+
+
+
+
+
+
 

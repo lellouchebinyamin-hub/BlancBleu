@@ -30,6 +30,12 @@ export function localizedPath(locale: Locale, path: string = routes.home): strin
   return `${prefix}${path}`;
 }
 
+/** The top-level section a path belongs to: "/blog/some-article" is in "/blog". */
+export function sectionOf(path: string): string {
+  const [first] = path.split("/").filter(Boolean);
+  return first ? `/${first}` : routes.home;
+}
+
 export function otherLocale(locale: Locale): Locale {
   return locale === "he" ? "fr" : "he";
 }

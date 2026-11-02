@@ -81,7 +81,7 @@ export function HeroCube({ className }: { className?: string }) {
         className,
       )}
     >
-      <div className="grid size-full place-items-center motion-safe:animate-pop-in [animation-delay:calc(var(--intro)_+_300ms)]">
+      <div className="grid size-full place-items-center motion-safe:animate-pop-in [animation-delay:calc(var(--intro)_+_300ms)] max-md:justify-items-start">
         <div className="relative aspect-square w-[calc(var(--s)*1.9)] max-md:-translate-y-4">
           <motion.div
             className="absolute inset-0"

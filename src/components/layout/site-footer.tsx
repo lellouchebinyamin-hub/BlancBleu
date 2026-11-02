@@ -1,4 +1,5 @@
 import { ArrowUpIcon, MailIcon, PhoneIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Logo } from "@/components/layout/logo";
@@ -51,7 +52,7 @@ export function SiteFooter({
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
             <Link href={to(routes.home)} aria-label={homeLabel} className="inline-block">
-              <Logo />
+              <Logo className="h-12 opacity-80 md:h-14 lg:h-14" />
             </Link>
             <p className="mt-8 max-w-[21rem] font-serif text-[1.875rem] leading-[1.15] text-balance md:text-[2.375rem]">
               {copy.tagline}
@@ -129,13 +130,16 @@ export function SiteFooter({
         </div>
       </div>
 
-      <p
-        aria-hidden
-        dir="ltr"
-        className="pointer-events-none mt-10 -mb-[0.06em] text-center font-sans text-[clamp(3.5rem,18.5vw,17rem)] leading-[0.8] font-medium tracking-[-0.045em] whitespace-nowrap text-navy/[0.06] select-none"
-      >
-        BlancBleu
-      </p>
+      <div aria-hidden className="pointer-events-none mt-12 mb-6 flex justify-center px-5 md:mt-16 md:mb-10">
+        <Image
+          src="/brand/logo.png"
+          alt=""
+          width={640}
+          height={215}
+          unoptimized
+          className="w-[min(100%,58rem)] opacity-[0.07] select-none"
+        />
+      </div>
     </footer>
   );
 }
