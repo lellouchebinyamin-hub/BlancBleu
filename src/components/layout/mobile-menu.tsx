@@ -132,6 +132,7 @@ export function MobileMenu({ locale, path, t }: MobileMenuProps) {
               </a>
               <Link
                 href={site.whatsappUrl ?? contactHref}
+                {...(site.whatsappUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 onClick={close}
                 className="flex h-14 flex-1 items-center justify-center gap-2.5 rounded-full border border-paper/30 font-medium transition-colors duration-300 hover:bg-paper/10"
               >

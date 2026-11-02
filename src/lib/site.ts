@@ -15,6 +15,6 @@ export const site = {
     /** The old site's French number is missing a digit. Add it here once confirmed. */
     fr: null as { display: string; tel: string } | null,
   },
-  /** Set to a https://wa.me/<number> link once the WhatsApp number is confirmed. */
-  whatsappUrl: null as string | null,
+  /** Opens a WhatsApp chat with 054-666-1570. The number is in international format, without a leading 0 or +. */
+  whatsappUrl: "https://wa.me/972546661570" as string | null,
 } as const;

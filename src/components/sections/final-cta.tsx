@@ -103,6 +103,9 @@ export function FinalCta({ locale, copy }: { locale: Locale; copy: Dictionary["f
                   <RevealItem as="li" key={channel.key} className={cn(spansTwo && "sm:col-span-2")}>
                     <a
                       href={channel.href}
+                      {...(channel.key === "whatsapp"
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="group/channel grid h-full grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-4 gap-y-5 rounded-[1.5rem] border border-paper/15 bg-paper/[0.05] p-4 transition-[border-color,background-color,translate] duration-500 ease-brand hover:-translate-y-0.5 hover:border-paper/35 hover:bg-paper/[0.1] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-start sm:p-5"
                     >
                       <span className="grid size-11 place-items-center rounded-full bg-paper/10 text-sky sm:col-start-1 sm:row-start-1">

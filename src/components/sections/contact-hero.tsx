@@ -76,7 +76,12 @@ export function ContactHero({ locale, copy, facts }: ContactHeroProps) {
           <ul className="flex flex-wrap gap-3 motion-safe:animate-fade-up [animation-delay:calc(var(--intro)_+_900ms)]">
             {direct.map(({ key, label, href, icon: Icon, ltr }) => (
               <li key={key}>
-                <a href={href} dir={ltr ? "ltr" : undefined} className={pill}>
+                <a
+                  href={href}
+                  dir={ltr ? "ltr" : undefined}
+                  {...(key === "whatsapp" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className={pill}
+                >
                   <Icon aria-hidden strokeWidth={1.5} className="size-4" />
                   {label}
                 </a>

@@ -35,6 +35,7 @@ export function CtaButtons({ locale, primary, secondary, className }: CtaButtons
 
       <Link
         href={secondaryHref}
+        {...(site.whatsappUrl ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className={cn(buttonVariants({ variant: "glass", size: "lg" }), "sm:ps-6")}
       >
         <MessageCircleIcon strokeWidth={1.5} />

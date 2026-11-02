@@ -45,7 +45,7 @@ To add a blog article, add an entry to `postsHe` in `src/content/blog-he.ts` and
 
 ## Open items
 
-- `src/lib/site.ts`: set `whatsappUrl` (a `https://wa.me/<number>` link) once the number is confirmed. Until then the WhatsApp buttons lead to the contact page.
+- `src/lib/site.ts`: `whatsappUrl` opens a WhatsApp chat with 054-666-1570. Change the number there if it changes.
 - Set `NEXT_PUBLIC_SITE_URL` to the real domain once it is connected. Until then, on Vercel, links and previews use the project's own production address.
 - Contact form (`src/app/actions/contact.ts`): set `CONTACT_WEBHOOK_URL` to an endpoint that accepts a JSON POST (Formspree, Make, Zapier, n8n, or your own). Without it the form answers with an error instead of pretending to send. Add rate limiting before launch.
 - `src/lib/site.ts`: confirm the Israeli phone number and add the French one (the old site's French number is missing a digit). Social links and company details (registration number, address) are not shown yet because they were not provided.
