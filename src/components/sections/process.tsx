@@ -15,8 +15,9 @@ type ProcessProps = {
 /** Section 5: the steps from the first call to the signature, and the second call to action. */
 export function Process({ locale, copy }: ProcessProps) {
   return (
-    <section aria-labelledby="process-title" className="px-3 py-3 md:px-5 md:py-5">
-      <div className="mx-auto max-w-[90rem] rounded-[2rem] bg-mist md:rounded-[3rem]">
+    <section aria-labelledby="process-title" className="py-3 md:px-5 md:py-5">
+      {/* Edge to edge on phones, like the dark bands. */}
+      <div className="mx-auto max-w-[90rem] bg-mist md:rounded-[3rem]">
         <div className="mx-auto max-w-[75rem] px-5 py-16 sm:px-6 md:py-32">
           <header className="mx-auto flex max-w-[44rem] flex-col items-center text-center">
             <Eyebrow className="mb-7">{copy.eyebrow}</Eyebrow>
