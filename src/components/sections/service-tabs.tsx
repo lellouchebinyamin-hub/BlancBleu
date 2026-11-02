@@ -10,9 +10,10 @@ type ServiceTabsProps = {
 };
 
 /**
- * A floating bar of jump links to each service. It follows the page: the tab for the service on screen
- * is filled, centred in the bar, and on phones a dot under the bar stretches into a line to match.
- * On phones the tabs sit side by side and swipe; the bar slides up under the header as it hides.
+ * A bar of jump links to each service. The tab for the service on screen is filled and centred in the bar,
+ * and on phones a dot under the bar stretches into a line to match. On phones the tabs sit side by side
+ * and swipe, and the bar is a plain row after the hero. From the medium breakpoint it is pinned under the
+ * header and slides up as the header hides.
  */
 export function ServiceTabs({ label, links }: ServiceTabsProps) {
   const [active, setActive] = useState(links[0]?.slug);
@@ -49,7 +50,7 @@ export function ServiceTabs({ label, links }: ServiceTabsProps) {
   }, [active]);
 
   return (
-    <div className="service-tabs pointer-events-none sticky z-30 bg-linear-to-b from-paper from-55% to-paper/0 px-3 pb-5 md:px-6">
+    <div className="service-tabs pointer-events-none z-30 px-3 pb-5 md:sticky md:bg-linear-to-b md:from-paper md:from-55% md:to-paper/0 md:px-6">
       <div className="pointer-events-auto mx-auto w-fit max-w-full">
         <nav aria-label={label}>
           <ul

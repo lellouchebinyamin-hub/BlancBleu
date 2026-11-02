@@ -76,7 +76,8 @@ export function ServiceDetails({ locale, copy, items }: ServiceDetailsProps) {
                 {item.lead}
               </Reveal>
 
-              <Reveal className="mt-8 rounded-[2rem] bg-navy p-6 text-paper md:mt-10 md:p-8">
+              {/* Edge to edge on phones, a rounded card from the medium breakpoint. */}
+              <Reveal className="-mx-5 mt-8 bg-navy px-5 py-7 text-paper sm:-mx-6 sm:px-6 md:mx-0 md:mt-10 md:rounded-[2rem] md:p-8">
                 <h3 className="mb-5 flex items-center gap-2.5 text-sm text-sky">
                   <span aria-hidden className="size-2 rounded-full bg-sky" />
                   {copy.includes}

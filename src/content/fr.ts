@@ -6,7 +6,7 @@ export const fr = {
   meta: {
     title: "BlancBleu | Conseil en crédit immobilier, depuis 2004",
     description:
-      "BlancBleu : conseil indépendant en crédit immobilier, depuis 2004. Un accompagnement pour les Français installés en Israël et les Israéliens, en français et en hébreu.",
+      "BlancBleu : conseil indépendant en crédit immobilier, depuis 2004. Un accompagnement pour les francophones et les Israéliens, en français et en hébreu.",
   },
   common: {
     skipToContent: "Aller au contenu",
@@ -27,7 +27,7 @@ export const fr = {
   hero: {
     eyebrow: "Conseil en crédit immobilier · depuis 2004",
     title: { lead: "Un bon crédit commence par", accent: "un conseiller de votre côté" },
-    lead: "Chez BlancBleu, nous accompagnons les Français installés en Israël et les Israéliens, de l’étude de votre situation jusqu’à la signature en banque. En français et en hébreu, auprès des principales banques du pays.",
+    lead: "Chez BlancBleu, nous accompagnons les francophones et les Israéliens, de l’étude de votre situation jusqu’à la signature en banque. En français et en hébreu, auprès des principales banques du pays.",
     primaryCta: "Premier échange gratuit",
     secondaryCta: "WhatsApp",
   },

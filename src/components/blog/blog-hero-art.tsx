@@ -21,7 +21,7 @@ export function BlogHeroArt({ label, chips }: BlogHeroArtProps) {
   return (
     <div
       aria-hidden
-      className="relative isolate mx-auto h-[21rem] w-full max-w-[28rem] overflow-hidden rounded-[2.25rem] bg-navy text-paper motion-safe:animate-pop-in [animation-delay:calc(var(--intro)_+_300ms)] md:aspect-[4/5] md:h-auto md:max-w-none md:rounded-[2.5rem]"
+      className="relative isolate -mx-5 h-[21rem] overflow-hidden bg-navy text-paper motion-safe:animate-pop-in [animation-delay:calc(var(--intro)_+_300ms)] sm:-mx-6 md:mx-auto md:aspect-[4/5] md:h-auto md:w-full md:rounded-[2.5rem]"
     >
       <p className="absolute start-6 top-6 flex items-center gap-2.5 text-sm text-sky md:start-8 md:top-8">
         <span className="size-2 rounded-full bg-sky" />

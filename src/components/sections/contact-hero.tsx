@@ -43,7 +43,7 @@ export function ContactHero({ locale, copy, facts }: ContactHeroProps) {
       aria-labelledby="contact-title"
       className="relative isolate overflow-clip pt-[calc(var(--header-h)+2.5rem)] md:pt-[calc(var(--header-h)+4rem)]"
     >
-      <div className="mx-auto grid max-w-[75rem] items-center gap-6 px-5 pb-10 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-8 md:pb-16">
+      <div className="mx-auto grid max-w-[75rem] items-center gap-6 px-5 pb-10 sm:px-6 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-12 lg:gap-20 md:pb-16">
         <HeroCube className="max-md:hidden" />
 
         <div>

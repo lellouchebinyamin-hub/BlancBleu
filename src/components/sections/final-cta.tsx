@@ -71,10 +71,11 @@ export function FinalCta({ locale, copy }: { locale: Locale; copy: Dictionary["f
     <section
       id="contact-form"
       aria-labelledby="final-cta-title"
-      className="scroll-mt-4 px-3 py-3 md:px-5 md:py-5"
+      className="scroll-mt-4 py-3 md:px-5 md:py-5"
     >
-      <div className="mx-auto max-w-[90rem] overflow-clip rounded-[2rem] bg-navy text-paper md:rounded-[3rem]">
-        <div className="mx-auto grid max-w-[75rem] gap-14 px-5 py-16 sm:px-6 md:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-20">
+      {/* On phones the band runs edge to edge, square, like the "why not the bank" band. */}
+      <div className="mx-auto max-w-[90rem] overflow-clip bg-navy text-paper md:rounded-[3rem]">
+        <div className="mx-auto grid max-w-[75rem] gap-14 px-4 py-16 sm:px-6 md:py-28 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-20">
           <div>
             <Eyebrow tone="dark" className="mb-7">
               {copy.eyebrow}
@@ -132,9 +133,10 @@ export function FinalCta({ locale, copy }: { locale: Locale; copy: Dictionary["f
           </div>
 
           <Reveal delay={0.15}>
-            <div className="rounded-[2rem] bg-white p-6 text-navy md:p-10">
-              <div className="mb-8 flex items-center justify-between gap-4">
-                <h3 className="font-serif text-[1.75rem] leading-tight font-normal md:text-[2rem]">
+            <div className="rounded-[1.75rem] bg-white p-5 text-navy md:rounded-[2rem] md:p-10">
+              {/* On phones the badge sits above the title, so a longer title (French) keeps the full width. */}
+              <div className="mb-7 flex flex-col-reverse items-start gap-3 md:mb-8 md:flex-row md:items-center md:justify-between md:gap-4">
+                <h3 className="font-serif text-[1.375rem] leading-tight font-normal sm:text-[1.75rem] md:text-[2rem]">
                   {copy.formTitle}
                 </h3>
                 <span className="shrink-0 rounded-full bg-mist px-3.5 py-1.5 text-sm">

@@ -28,8 +28,8 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2">
-      <Label htmlFor={htmlFor} className="justify-between text-[0.9375rem]">
+    <div className="flex flex-col gap-1.5 md:gap-2">
+      <Label htmlFor={htmlFor} className="justify-between text-sm md:text-[0.9375rem]">
         {label}
         {hint ? <span className="font-normal text-muted-foreground">{hint}</span> : null}
       </Label>
@@ -70,7 +70,7 @@ export function ContactForm({
   const invalid = state.status === "invalid" ? state.fields : [];
 
   return (
-    <form action={formAction} noValidate className="flex flex-col gap-5">
+    <form action={formAction} noValidate className="flex flex-col gap-3.5 md:gap-5">
       <input type="hidden" name="locale" value={locale} />
       <div aria-hidden className="absolute -start-[9999px] size-0 overflow-hidden opacity-0">
         <label>
@@ -95,7 +95,7 @@ export function ContactForm({
         />
       </Field>
 
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-3.5 md:grid-cols-2 md:gap-5">
         <Field label={copy.phone} hint={copy.optional} htmlFor="contact-phone">
           <Input
             id="contact-phone"
@@ -137,15 +137,15 @@ export function ContactForm({
         </p>
       ) : null}
 
-      <div className="flex flex-col gap-5 pt-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between md:gap-5 md:pt-2">
         <Button
           type="submit"
           size="chip"
           disabled={pending}
-          className="w-full justify-between sm:w-auto sm:min-w-44"
+          className="w-full justify-between max-sm:h-12 sm:w-auto sm:min-w-44"
         >
           {pending ? copy.sending : copy.submit}
-          <span className="grid size-10 place-items-center rounded-full bg-white text-navy">
+          <span className="grid size-9 place-items-center rounded-full bg-white text-navy sm:size-10">
             {pending ? (
               <Loader2Icon strokeWidth={1.75} className="animate-spin" />
             ) : (
@@ -157,7 +157,7 @@ export function ContactForm({
           </span>
         </Button>
 
-        <p className="max-w-[20rem] text-sm leading-relaxed text-muted-foreground">
+        <p className="max-w-[20rem] text-xs leading-relaxed text-muted-foreground md:text-sm">
           {copy.consent}{" "}
           <Link
             href={localizedPath(locale, routes.privacy)}

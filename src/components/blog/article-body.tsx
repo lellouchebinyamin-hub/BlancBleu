@@ -110,7 +110,7 @@ type SummaryPanelProps = { title: string; items: ReadonlyArray<string> };
 /** "In short": the three takeaways, on a navy panel before the article starts. */
 export function SummaryPanel({ title, items }: SummaryPanelProps) {
   return (
-    <div className="rounded-[2rem] bg-navy p-6 text-paper md:p-10">
+    <div className="-mx-5 bg-navy px-5 py-7 text-paper sm:-mx-6 sm:px-6 md:mx-0 md:rounded-[2rem] md:p-10">
       <Reveal as="p" className="flex items-center gap-2.5 text-sm text-sky">
         <span aria-hidden className="size-2 rounded-full bg-sky" />
         {title}

@@ -20,7 +20,7 @@ export function BlogHero({ locale, copy, facts }: BlogHeroProps) {
       aria-labelledby="blog-title"
       className="relative isolate overflow-clip pt-[calc(var(--header-h)+2.5rem)] md:pt-[calc(var(--header-h)+4rem)]"
     >
-      <div className="mx-auto grid max-w-[75rem] items-center gap-10 px-5 pb-12 sm:px-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-14 md:pb-20">
+      <div className="mx-auto grid max-w-[75rem] items-center gap-10 px-5 pb-12 sm:px-6 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:gap-14 lg:gap-20 md:pb-20">
         <div>
           <p className="mb-6 inline-flex items-center gap-2.5 rounded-full border bg-white/70 py-1.5 ps-3.5 pe-4 text-sm text-muted-foreground backdrop-blur-sm motion-safe:animate-fade-up [animation-delay:calc(var(--intro)_+_150ms)]">
             <span aria-hidden className="relative flex size-2">
