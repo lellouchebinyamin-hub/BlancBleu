@@ -1,26 +1,231 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Brand tokens (see docs/art-direction.md). The blue is provisional until it is sampled from the logo file. */
+@theme {
+  --color-paper: #f2f6fb;
+  --color-navy: #0a1e3f;
+  --color-brand: #0b4a94;
+  --color-sky: #8db2e8;
+  --color-mist: #e2ebf7;
+  --color-hairline: #d3deec;
+  --color-ink-muted: #546482;
+  --color-danger: #b3261e;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --text-display: clamp(2.5rem, 1.3rem + 4.2vw, 4.75rem);
+  --text-display--line-height: 1.06;
+  --text-display-fr: clamp(2.25rem, 1.2rem + 3.4vw, 4rem);
+  --text-display-fr--line-height: 1.05;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --ease-brand: cubic-bezier(0.22, 0.7, 0.2, 1);
+
+  --animate-rise: rise 1.05s var(--ease-brand) both;
+  --animate-fade-up: fade-up 0.9s var(--ease-brand) both;
+  --animate-fade-in: fade-in 1.8s ease both;
+  --animate-grow-x: grow-x 1s var(--ease-brand) both;
+  --animate-draw: draw 2.2s var(--ease-brand) both;
+  --animate-splash-exit: splash-exit 0.85s var(--ease-brand) 2.3s both;
+  --animate-splash-out: splash-out 0.5s ease 2.1s both;
+  --animate-splash-progress: splash-progress 2.1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+
+  @keyframes splash-exit {
+    from {
+      clip-path: inset(0 0 0 0);
+    }
+    to {
+      clip-path: inset(0 0 100% 0);
+      visibility: hidden;
+    }
+  }
+  @keyframes splash-out {
+    to {
+      opacity: 0;
+      transform: translateY(-14px) scale(1.04);
+    }
+  }
+  @keyframes splash-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  --animate-pop-in: pop-in 1.5s var(--ease-brand) both;
+  --animate-marquee: marquee 48s linear infinite;
+  --animate-marquee-rtl: marquee-rtl 48s linear infinite;
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.88) translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-rtl {
+    to {
+      transform: translateX(50%);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(115%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* shadcn semantic tokens, mapped onto the brand palette. */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-heebo), ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  --font-serif: var(--font-frank), Georgia, "Times New Roman", serif;
+  --font-heading: var(--font-serif);
+
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
 }
+
+:root {
+  --background: var(--color-paper);
+  --foreground: var(--color-navy);
+  --card: #ffffff;
+  --card-foreground: var(--color-navy);
+  --popover: var(--color-paper);
+  --popover-foreground: var(--color-navy);
+  --primary: var(--color-brand);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-mist);
+  --secondary-foreground: var(--color-navy);
+  --muted: var(--color-mist);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-mist);
+  --accent-foreground: var(--color-navy);
+  --border: var(--color-hairline);
+  --input: var(--color-hairline);
+  --ring: var(--color-brand);
+  --radius: 2px;
+
+  --header-h: 4.25rem;
+  /* How long the entrance animations wait for the intro splash. 0 once it has been seen. */
+  --intro: 0s;
+}
+
+html:not(.no-splash) {
+  --intro: 2.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not(.no-splash) {
+    --intro: 0s;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --header-h: 5.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: var(--header-h);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (min-width: 56.25rem) {
+    body {
+      font-size: 1.125rem;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+

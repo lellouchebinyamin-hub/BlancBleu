@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BlancBleu
 
-## Getting Started
+Marketing site for BlancBleu, a private mortgage advisory firm (since 2004) serving Hebrew and French speakers in Israel.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, Cache Components), React 19, TypeScript
+- Tailwind CSS v4, shadcn/ui (Base UI) for ready-made components
+- Motion for scroll and pointer effects; entrance animations are plain CSS
+- `next/font`: Frank Ruhl Libre (headings) and Heebo (body), self-hosted
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+docs/                     strategy, homepage architecture, art direction, motion system
+src/app/(he)/             Hebrew root layout and pages, served at /
+src/app/fr/               French root layout and pages, served at /fr
+src/components/ui/        shadcn components (button, sheet), tuned to the brand
+src/components/layout/    document shell, header, logo
+src/components/motion/    Reveal, RevealGroup, TextReveal, Parallax, MotionProvider
+src/components/sections/  page sections (hero so far)
+src/content/              typed dictionaries: he.ts, fr.ts
+src/features/             page compositions
+src/lib/                  i18n helpers, fonts, metadata, site constants, motion tokens
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Two root layouts (one per language) set `lang` and `dir` on `<html>`, so there is no i18n library and no middleware. Components use logical Tailwind utilities (`ms-`, `ps-`, `start-`, `border-s`) so both directions share one implementation. To add a page, add a route file in each language folder and the strings to both dictionaries.
 
-## Learn More
+## Open items
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/lib/site.ts`: set `whatsappUrl` once the number is confirmed; set `NEXT_PUBLIC_SITE_URL` for the real domain.
+- Replace the vector approximation in `src/components/layout/logo.tsx` with the supplied logo file, and sample the exact brand blue (`--color-brand` in `globals.css`).
+- Contact form (`src/app/actions/contact.ts`): set `CONTACT_WEBHOOK_URL` to an endpoint that accepts a JSON POST (Formspree, Make, Zapier, n8n, or your own). Without it the form answers with an error instead of pretending to send. Add rate limiting before launch.
+- `src/lib/site.ts`: confirm the Israeli phone number and add the French one (the old site's French number is missing a digit). Social links and company details (registration number, address) are not shown yet because they were not provided.
+- Header, footer and section links point at `/services`, `/blog`, `/contact` and the legal pages, which are built in later steps.
